@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab2/Src/blinkyCNT.c&apos; to &apos;blinkyCNT_BTN.c&apos;" description="Rename resource &apos;blinkyCNT.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/blinkyCNT.c" name="blinkyCNT_BTN.c" stamp="1768778431177" updateReferences="true"/>
+</session>

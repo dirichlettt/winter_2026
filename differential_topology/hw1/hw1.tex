@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\problem{1}
+Consider  \(\bS^n\) as a subset of \(\bR^{n+1}\). Denote the north pole by \(\vN = (0,\dots,0,1)\) and the south pole by \(\vS = (0,\dots,0,-1)\). For any point \(\vp = (x_1, \dots, x_{n+1}) \in \bS^2\), we compute its north-pole and south-pole stereographic projections, \(\phi_N\) and \(\phi_S\) respectively, onto the equatorial hyperplane \(E\) of points \(\vq = (X_1, \dots, X_n, 0)\), and their associated inverses and transition functions.
+
+We compute the north-pole projection \(\phi_N : \bS^2 \to E\). The line intersecting \(\vN\) and \(\vp\) is parameterized by
+\begin{align*}
+    \vL(t) = \vN + t(\vp - \vN) = (tx_1, \dots, tx_n, 1 + t(x_{n+1}-1)).
+\end{align*}
+Solving for when this line intersects \(E\):
+\begin{align*}
+    0 = 1 + t(x_{n+1}-1) \implies t = \frac{1}{1-x_{n+1}}.
+\end{align*}
+Hence
+\begin{align*}
+    \phi_N(\vp) = (X_1, \dots, X_n, 0) = \qty(\frac{x_1}{1-x_{n+1}}, \dots, \frac{x_n}{1-x_{n+1}}, 0).
+\end{align*}
+We now compute \(\phi_N\inv\). For \(\vq = (X_1, \dots, X_n, 0) \in E\), the line intersecting \(\vq\) and \(\vN\) is parameterized by
+\begin{align*}
+    \tilde{\vL}(t)
+    & = \vq + t(\vN-\vq)
+    \\
+    & = (X_1 - tX_1, \dots, X_n - tX_n, t)
+    \\
+    & = ((1-t)X_1, \dots, (1-t)X_n, t).
+\end{align*}
+Solving for \(\norm{\tilde{\vL}} = 1\):
+\begin{align*}
+    1 
+    & = (1-t)^2 X_1^2 + \cdots + (1-t)^2 X_n^2 + t^2
+    \\
+    & = (1-t)^2\norm{\vq}^2 + t^2
+    \\ \implies
+    0
+    & = (1-t)^2\norm{\vq}^2 - (1-t^2)
+    \\
+    & = (1-t)((1-t)\norm{\vq}^2 - (1+t)).
+\end{align*}
+The solution \(t = 1\) gives \(\tilde{\vL} = \vN\). Hence, \(\vp\) occurs when
+\begin{align*}
+    t = \frac{\norm{\vq}^2 - 1}{\norm{\vq}^2 + 1}.
+\end{align*}
+Thus
+\begin{align*}
+    \phi_N\inv(\vq)
+    & = (x_1, \dots, x_n, x_{n+1})
+    \\
+    & = \qty(\qty(1-\frac{\norm{\vq}^2 - 1}{\norm{\vq}^2 + 1})X_1, \dots, \qty(1-\frac{\norm{\vq}^2 - 1}{\norm{\vq}^2 + 1})X_n, \frac{\norm{\vq}^2 - 1}{\norm{\vq}^2 + 1})
+    \\
+    & = \qty(\frac{2}{\norm{\vq}^2+1}X_1, \dots, \frac{2}{\norm{\vq}^2+1} X_n, \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}).
+\end{align*}
+
+By symmetry, \(\phi_S\) and \(\phi_S\inv\) are given by the above formulas with \(x_{n+1} \mapsto -x_{n+1}\):
+\begin{align*}
+    & \phi_S(\vp) = \qty(\frac{x_1}{1+x_{n+1}}, \dots, \frac{x_n}{1+x_{n+1}}, 0)
+    \\
+    & \phi_S\inv(\vq) = \qty(\frac{2}{\norm{\vq}^2+1}X_1, \dots, \frac{2}{\norm{\vq}^2+1}X_n, -\frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}).
+\end{align*}
+
+The transition functions are thus given by
+\begin{align*}
+    \phi_S \circ \phi_N\inv(\vq)
+    & = \phi_S \qty(\frac{2}{\norm{\vq}^2+1}X_1, \dots, \frac{2}{\norm{\vq}^2+1} X_n, \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1})
+    \\
+    & = \qty(\frac{\frac{2}{\norm{\vq}^2+1}X_1}{1 + \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}}, \dots, \frac{\frac{2}{\norm{\vq}^2+1}X_n}{1 + \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}}, 0)
+    \\
+    & = \qty(\frac{X_1}{\norm{\vq}^2}, \dots, \frac{X_n}{\norm{\vq}^2}, 0)
+\end{align*}
+and
+\begin{align*}
+    \phi_N \circ \phi_S\inv(\vq)
+    & = \phi_N \qty(\frac{2}{\norm{\vq}^2+1}X_1, \dots, \frac{2}{\norm{\vq}^2+1}X_n, -\frac{\norm{\vq}^2-1}{\norm{\vq}^2+1})
+    \\
+    & = \qty(\frac{\frac{2}{\norm{\vq}^2+1}X_1}{1 + \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}}, \dots, \frac{\frac{2}{\norm{\vq}^2+1}X_n}{1 + \frac{\norm{\vq}^2-1}{\norm{\vq}^2+1}}, 0)
+    \\
+    & = \qty(\frac{X_1}{\norm{\vq}^2}, \dots, \frac{X_n}{\norm{\vq}^2}, 0).
+\end{align*}
+
+
+\problem{2}
+Represent \(\bT^2\) by its fundamental polygon, fit to \([0, 1]^2 \subset \bR^2\). We choose for a chart the following open sets in \(\bT^2\):
+\begin{align*}
+    & U_1 = (0, 1)^2
+    \\
+    & U_2 = ([0, \onehalf) \cup (\onehalf, 1]) \times (0, 1)
+    \\
+    & U_3 = (0, 1) \times ([0, \onehalf) \cup (\onehalf, 1])
+    \\
+    & U_4 = ([0, \onehalf) \cup (\onehalf, 1])^2
+\end{align*}
+together with the respective homeomorphisms \(\phi_i : \bT^2 \to \bR^2\), \(i = 1,\dots,4\):
+\begin{align*}
+    \begin{array}{ll}
+        \phi_1(x,y) = (x,y), & \phi_1\inv(x,y) = (x,y)
+        \\
+        \phi_2(x,y) = (x+\onehalf\mod{1}, y) & \phi_2\inv(x,y) = (x-\onehalf\mod{1}, y)
+        \\
+        \phi_3(x,y) = (x, y+\onehalf\mod{1}) & \phi_3\inv(x,y) = (x,y-\onehalf\mod{1})
+        \\
+        \phi_4(x,y) = (x+\onehalf\mod{1}, y+\onehalf\mod{1}) & \phi_4\inv(x,y) = (x-\onehalf\mod{1}, y-\onehalf\mod{1}).
+    \end{array}
+\end{align*}
+We thus have the following transition maps:
+\begin{align*}
+    \begin{array}{ll}
+        \phi_1\circ\phi_2\inv(x,y) = (x-\onehalf\mod{1}, y), & \phi_2\circ\phi_1\inv(x,y) = (x+\onehalf\mod{1}, y)
+        \\
+        \phi_1\circ\phi_3\inv(x,y) = (x,y-\onehalf\mod{1}), & \phi_3\circ\phi_1\inv(x,y) = (x, y+\onehalf\mod{1})
+        \\
+        \phi_1\circ\phi_4\inv(x,y) = (x-\onehalf\mod{1}, y-\onehalf\mod{1}), & \phi_4\circ\phi_1\inv(x,y) = (x+\onehalf\mod{1}, y+\onehalf\mod{1})
+        \\
+        \phi_2\circ\phi_3\inv(x,y) = (x+\onehalf\mod{1}, y-\onehalf\mod{1}), & \phi_3\circ\phi_2\inv(x,y) = (x-\onehalf\mod{1}, y+\onehalf\mod{1})
+        \\
+        \phi_2\circ\phi_4\inv(x,y) = (x,y-\onehalf\mod{1}), & \phi_4\circ\phi_2\inv(x,y) = (x,y+\onehalf\mod{1})
+        \\
+        \phi_3\circ\phi_4\inv(x,y) = (x-\onehalf\mod{1}, y), & \phi_4\circ\phi_3\inv(x,y) = (x+\onehalf\mod{1}, y).
+    \end{array}
+\end{align*}
+
+\problem{3}
+We have \(\bR\bP^n = \set{[x_0:\cdots:x_n]}\) with the atlas \(\set{(U_i, \phi_i)}_{i=0}^n\) given by 
+\begin{align*}
+    & U_i = \set{[x_0:\cdots:x_n] \suchthat x_i \neq 0}
+    \\
+    & \phi_i : U_i \to \bR^n,\ [x_0:\cdots:x_n] \mapsto \qty(\frac{x_0}{x_i}, \dots, \widehat{\frac{x_i}{x_i}}, \dots, \frac{x_n}{x_i}).
+\end{align*}
+We compute the inverse of the chart maps. For a fixed index \(1 \leq i \leq n\), we label our coordinates in \(\bR^n\) by \((X_0, \dots, \widehat{X_i}, \dots, X_n)\). Then
+\begin{align*}
+    \phi_i\inv(X_0, \dots, \widehat{X_i}, \dots, X_n) = [X_0 : \cdots : X_{i-1} : 1 : X_{i+1} : \cdots : X_n]
+\end{align*}
+because
+\begin{align*}
+    \phi_i([X_0 : \cdots : X_{i-1} : 1 : X_{i+1} : \cdots : X_n])
+    & = \qty(\frac{X_0}{1}, \dots, \frac{X_{i-1}}{1}, \frac{X_{i+1}}{1}, \dots, \frac{X_n}{1}).
+\end{align*}
+Therefore, for \(i \neq j\), the transition function \(\phi_i \circ \phi_j\inv\) is given by
+\begin{align*}
+    \phi_i\circ\phi_j\inv(X_0, \dots, \widehat{X_j}, \dots, X_n)
+    & = \phi_i([X_0 : \cdots : X_{j-1} : 1 : X_{j+1} : X_n])
+    \\
+    & = \qty(\frac{X_0}{X_i}, \dots, \widehat{\frac{X_i}{X_i}}, \dots, \frac{X_{j-1}}{X_i}, \frac{1}{X_i}, \frac{X_{j+1}}{X_i}, \dots, \frac{X_n}{X_i}).
+\end{align*}
+
+\problem{4} e choose for an atlas for \(\bC\bP^n\) one analogous to the atlas above for \(\bR\bP^n\). Consider \(\set{(U_i, \phi_i)}_{i=0}^n\) given by
+\begin{align*}
+    & U_i = \set{[z_0 : \cdots : z_n] \suchthat z_i \neq 0}
+    \\
+    & \phi_i : U_i \to \bC^n,\ [z_0 : \cdots : z_n] \mapsto \qty(\frac{z_0}{z_i}, \dots, \widehat{\frac{z_i}{z_i}}, \dots, \frac{z_n}{z_i}).
+\end{align*}
+The inverses and transition functions are exactly as above, substituting \(x_i \mapsto z_i\) and \(X_i \mapsto Z_i\). For \(i \neq j\), define the component functions \((f_1, \dots, \widehat{f_i}, \dots, f_n)\) of \(\phi_i \circ \phi_j\inv\) by
+\begin{align*}
+    & f_k(Z_0, \dots, \widehat{Z_j}, \dots, Z_n) = \frac{Z_k}{Z_i},\ k \neq i,\ k \neq j
+    \\
+    & f_j(Z-0, \dots, \widehat{Z_j}, \dots, Z_n) = \frac{1}{Z_i}.
+\end{align*}
+
+In the first case, \(f_k\) is independent of and thus holomorphic with respect to all \(Z_r\), where \(r \neq k\) and \(r \neq i\). Letting \(Z_k = X_k + IY_j\) and \(Z_i = X_i + IY_i\), where \(I\) is the imaginary unit, we get that
+\begin{align*}
+    f_k 
+    & = \frac{X_k + IY_k}{X_i + IY_i}
+    \\
+    & = \frac{X_k X_i + Y_k Y_i}{X_i^2 + Y_i^2} + I \frac{Y_k X_i - X_k Y_i}{X_i^2 + Y_i^2}
+    \\
+    & := u_k + Iv_k.
+\end{align*}
+Then we have that
+\begin{align*}
+    \pdv{u_k}{X_k}
+    & = \frac{X_i}{X_i^2 + Y_i^2}
+    \\
+    \pdv{v_k}{Y_k}
+    & = \frac{X_i}{X_i^2 + Y_i^2}
+    \\
+    \pdv{u_k}{Y_k}
+    & = \frac{Y_i}{X_i^2 + Y_i^2}
+    \\
+    \pdv{v_k}{X_k}
+    & = -\frac{Y_i}{X_i^2 + Y_i^2},
+\end{align*}
+satisfying the Cauchy-Riemann equations in \(Z_k\), and 
+\begin{align*}
+    \pdv{u_k}{X_i}
+    & = \frac{X_k(Y_i^2 - X_i^2)}{(X_i^2 + Y_i^2)^2}
+    \\
+    \pdv{v_k}{Y_i}
+    & = -\frac{X_k(X_i^2 - Y_i^2)}{(X_i^2 + Y_i^2)^2} = \frac{X_k(Y_i^2 - X_i^2)}{(X_i^2 + Y_i^2)^2}
+    \\
+    \pdv{u_k}{Y_i}
+    & = \frac{Y_k(X_i^2 - Y_i^2)}{(X_i^2 + Y_i^2)^2}
+    \\
+    \pdv{v_k}{X_i}
+    & = \frac{Y_k(Y_i^2 - X_i^2)}{(X_i^2 + Y_i^2)^2} = -\frac{Y_k(X_i^2 - Y_i^2)}{(X_i^2 + Y_i^2)^2}.
+\end{align*}
+Hence \(f_k\) is holomorphic in all coordinates. In the second case, \(f_j\) is only dependent on \(Z_i\). We have
+\begin{align*}
+    f_j
+    & = \frac{1}{X_i + IY_i}
+    \\
+    & = \frac{X_i}{X_i^2 + Y_i^2} - I\frac{Y_i}{X_i^2 + Y_i^2}
+    \\
+    & := u_j + Iv_j.
+\end{align*}
+We have that
+\begin{align*}
+    \pdv{u_j}{X_i}
+    & = \frac{Y_i^2 - X_i^2}{(X_i^2 + Y_i^2)^2}
+    \\
+    \pdv{v_j}{Y_i}
+    & = -\frac{X_i^2 - Y_i^2}{(X_i^2 + Y_i^2)^2} = \frac{Y_k(X_i^2 - Y_i^2)}{(X_i^2 + Y_i^2)^2}
+    \\
+    \pdv{u_j}{Y_i}
+    & = -\frac{2X_iY_i}{(X_i^2 + Y_i^2)}
+    \\
+    \pdv{v_j}{X_i}
+    & = \frac{2X_iY_i}{(X_i^2 + Y_i^2)^2}.
+\end{align*}
+Therefore, the transition functions are all holomorphic, and \(\bC\bP^n\) is a complex manifold.
+
+
+\problem{5} Define \(\Oplus = (0, 1) \in X\) and \(\Ominus = (0, -1) \in X\). Let \(q : X \to M\) be the quotient map. For any \(p \in X \setminus \set{\Oplus, \Ominus}\) with \(x\)-coordinate \(p_x\), \(q(p) = [p] = \set{(p_x, 1), (p_x, -1)}\). Meanwhile, \(q(\Oplus) = [\Oplus] = \set{\Oplus}\) and \(q(\Ominus) = [\Ominus] = \set{\Ominus}\). 
+
+We claim that \(M\) is locally Euclidean. For \([p] \in M\) with \(p \notin \set{\Oplus, \Ominus}\), define the neighborhood
+\begin{align*}
+    N_\epsilon([p]) := \set{[p'] \in M \suchthat \abs{p_x - p'_x} < \epsilon}, 
+\end{align*}
+where \(\epsilon < \abs{p_x}\). The preimage of this set under \(q\) is \((p_x-\epsilon, p_x+\epsilon) \times \set{1,-1}\), which is open in \(X \subset \bR^2\), thus \(N_\epsilon([p])\) is open. The neighborhood is homeomorphic to \((p_x-\epsilon, p_x+\epsilon)\) by the map \(\phi : [p] \mapsto p_x\). 
+
+For \([\Oplus]\), define \(N_\epsilon([\Oplus])\) as above, with only that \(\epsilon > 0\). The preimage of this set is
+\begin{align*}
+    q\inv(N_\epsilon([\Oplus])) = [((-\epsilon, 0) \cup (0, \epsilon)) \times \set{1, -1}] \cup \set{\Oplus},
+\end{align*}
+which is open, hence \(N_\epsilon([\Oplus])\) is open. This neighborhood is homeomorphic to \((-\epsilon, \epsilon)\) by the map \(\phi\). An analogous construction holds for \(\Ominus\). Thus, \(M\) is locally Euclidean.
+
+We now claim that \(M\) is second-countable. The rays \(\set{[p] \in M \suchthat p_x < 0 \text{ or } p_x > 0}\) have the usual countable basis of rational-radius open balls centered at rational points. We additionally add to this basis the collection of open balls \(N_\epsilon([\Oplus])\) and \(N_\epsilon([\Ominus])\) where \(\epsilon \in \bQ\). Hence \(M\) is second-countable.
+
+Finally, we claim that \(M\) is not Haussdorff. For every open set \(U_1\) containing \([\Oplus]\) and \(U_2\) containing \([\Ominus]\), there exist neighborhoods \(N_{\epsilon_1}([\Oplus]) \subseteq U_1\) and \(N_{\epsilon_2}([\Ominus]) \subseteq U_2\) for some \(\epsilon_1, \epsilon_2 > 0\). Therefore, if \(\epsilon = \min\set{\epsilon_1, \epsilon_2}\), then we have the neighborhoods \(N_{\epsilon}([\Oplus]) \subseteq U_1\) and \(N_{\epsilon}([\Ominus]) \subseteq U_2\). But these neighborhoods have nonempty intersection \(N_{\epsilon/2}([-\epsilon/2]) \cup N_{\epsilon/2}([\epsilon/2])\), therefore \(M\) is not Haussdorff.
+
+
+\problem{6}
+Let \(M, N\) be smooth manifolds, and let \(F : M \to N\).
+
+\forwardcase Suppose \(F\) satisfies Definition 1. Let \(p \in M\) be arbitrary. Since \(M\) is a manifold, there exists a chart \((U, \phi)\) with \(p \in U \subseteq M\). Similarly, since \(F(p) \in N\) and \(N\) is a manifold, there exists a chart \((V, \psi)\) with \(F(p) \in V \subseteq N\). By Definition 1, the map
+\begin{align*}
+    \psi \circ F \circ \phi\inv : \phi(U \cap F\inv(V)) \to \psi(V)
+\end{align*}
+is smooth. Hence \(F\) satisfies Definition 2.
+
+\backwardcase Suppose \(F\) satisfies Definition 2 using the charts \((U, \phi)\) with \(p \in U \subseteq M\) and \((V, \psi)\) with \(F(p) \in V \subseteq N\). Consider any charts \((U', \phi')\) with \(p \in U' \subseteq M\) and \((V', \psi')\) with \(F(p) \in V' \subseteq N\). Then
+\begin{align*}
+    \psi' \circ F \circ (\phi')\inv
+    & = (\psi' \circ \psi\inv) \circ (\psi \circ F \circ \phi\inv) \circ (\phi \circ (\phi')\inv) : \phi'(U' \cap F\inv(V')) \to \psi(V')
+\end{align*}
+is smooth, since the transition functions of smooth manifolds are smooth and the composition of smooth maps is smooth. Hence \(F\) satisfies Definition 1.
+
+Therefore, the two definitions are equivalent.
+
+\problem{7} See the following figures.
+
+\includepdf{hw1-surfaces.pdf}
+
+
+\end{document}

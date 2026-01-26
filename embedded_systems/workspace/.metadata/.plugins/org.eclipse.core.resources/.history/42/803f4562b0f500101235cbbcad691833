@@ -1,0 +1,141 @@
+/* NAME: 		 SOLEIL DEMICK
+ * COURSE: 		 ENGS 28 261 LAB 2
+ * PROGRAM NAME: ReactionTime.c
+ * DESCRIPTION:  2-player reaction time game with physical buttons and LEDs/ 
+ * DEPENDENCIES: N/A
+ * I/O PINS:
+ * 		PA 5, 6, 7 : OUTPUT, EXTERNAL LEDS
+ * 		PB 4, 5 : INPUT, BUTTONS
+ * REVISIONS:
+ * 		
+ */
+
+
+// INCLUDE FILES
+#include "ES28.h"
+
+// CONSTANTS
+// Clock access for ports A and B
+#define GPIOAEN	(1U<<0)
+#define GPIOBEN (1U<<1)
+
+// Port A pins 5, 6 7
+#define STARTING_LED_PIN (1U<<5)
+#define LED1_PIN (1U<<6)
+#define LED2_PIN (1U<<7)
+
+// Port B pins 4 and 5
+#define BTN_PIN1 (1U<<4)
+#define BTN_PIN2 (1U<<5)
+
+// easy reference for setting/clearing all LED pins at once
+#define LED_ALL (STARTING_LED_PIN | LED1_PIN | LED2_PIN)
+// counter to track which pins are high
+
+int main(void) {
+	RCC->IOPENR |= (GPIOAEN | GPIOBEN);		// Enable clock access to GPIOA
+
+	// Configure LED pins as outputs
+	GPIOA->MODER |=  (1U<<10); // PA5
+	GPIOA->MODER &= ~(1U<<11);
+	GPIOA->MODER |=  (1U<<12); // PA6
+	GPIOA->MODER &= ~(1U<<13);
+	GPIOA->MODER |=  (1U<<14); // PA7
+	GPIOA->MODER &= ~(1U<<15);
+
+	// Configure button pins as input
+	GPIOB->MODER &= ~(1U<<8);
+	GPIOB->MODER &= ~(1U<<9);
+	GPIOB->MODER &= ~(1U<<10);
+	GPIOB->MODER &= ~(1U<<11);
+
+	// Enable pull-up resistorS on button pins
+	GPIOB->PUPDR |=  (1U<<8);
+	GPIOB->PUPDR &= ~(1U<<9);
+	GPIOB->PUPDR |=  (1U<<10);
+	GPIOB->PUPDR &= ~(1U<<11);
+
+	// variables for button polling
+	unsigned btn1Pressed, btn2Pressed;
+	
+	// enum and variable for defining and switching between gamestates
+	typedef enum {IDLE, COUNTDOWN, PVP, POSTGAME} gameState_t;
+	gameState_t GAMESTATE = IDLE;
+	
+	// counters for timing certain phases
+	uint8_t start_counter;
+	uint8_t victory_counter;
+
+	// pointer to the LED indicating the winner
+	uint32_t winner_led;
+	
+	// indicates whether or not a winner was declared
+	unsigned winner_declared;
+
+	while(1) {
+		// poll the buttons
+		btn1Pressed = ((GPIOB->IDR & BTN_PIN1) == 0);
+		btn2Pressed = ((GPIOB->IDR & BTN_PIN2) == 0);
+		
+		switch (GAMESTATE) {
+		// state before game is played, waiting for player input
+		case IDLE:
+			if (btn1Pressed || btn2Pressed) {
+				// stop starting LED from blinking for a bit, move to next mode
+				GPIOA->ODR &= ~STARTING_LED_PIN;
+				delay_ms(2000);
+				GAMESTATE = COUNTDOWN;
+				start_counter = 3;
+			} else {
+				// keep blinking
+				GPIOA->ODR ^= STARTING_LED_PIN;
+				delay_ms(500);
+			}
+			break;
+		case COUNTDOWN:
+			// move to next mode and set starting LED permanently once countdown completes
+			if (start_counter == 0) {
+//				GAMESTATE = PVP;
+				GPIOA->ODR |= STARTING_LED_PIN;
+			} else {
+				// pulse the starting LED and wait another second
+				start_counter -= 1;
+				GPIOA->ODR |= STARTING_LED_PIN;
+				delay_ms(250);
+				GPIOA->ODR &= ~STARTING_LED_PIN;
+				delay_ms(1000);
+			}
+			break;
+		case PVP:
+			// if either player presses a button, decide which LED to flash and move to next stage
+			if (btn1Pressed) {
+				winner_led = LED1_PIN;
+				winner_declared = 1; // winner_declared just avoids writing redundant code
+			} else if (btn2Pressed) {
+				winner_led = LED2_PIN;
+				winner_declared = 1;
+			}
+			if (winner_declared) {
+				winner_declared = 0;
+				GAMESTATE = POSTGAME;
+				victory_counter = 5;
+			}
+			break;
+		case POSTGAME:
+			// reset once flashing is over
+			if (victory_counter == 0) {
+				GAMESTATE = IDLE;
+			} else {
+				// flash the winner's LED
+				GPIOA->ODR |= winner_led;
+				delay_ms(100);
+				GPIOA->ODR &= ~winner_led;
+				delay_ms(100);
+				victory_counter -= 1;
+			}
+			break;
+		}
+		
+	}
+	return 0;
+}

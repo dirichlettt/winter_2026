@@ -1,0 +1,95 @@
+17:45:05 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/kayboard_counter1.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/kayboard_counter1.d" -MT"Src/kayboard_counter1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/kayboard_counter1.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Counter.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\chase\Documents\winter_2026\embedded_systems\ES28W26\workspace\Counter\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Counter.elf
+ 
+arm-none-eabi-size  Counter.elf 
+arm-none-eabi-objdump -h -S Counter.elf  > "Counter.list"
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+Finished building: Counter.list
+ 
+17:45:11 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-size  Counter.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+17:46:27 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/kayboard_counter1.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/kayboard_counter1.d" -MT"Src/kayboard_counter1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/kayboard_counter1.o"
+arm-none-eabi-gcc -o "Counter.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\chase\Documents\winter_2026\embedded_systems\ES28W26\workspace\Counter\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Counter.elf
+ 
+arm-none-eabi-size  Counter.elf 
+arm-none-eabi-objdump -h -S Counter.elf  > "Counter.list"
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+Finished building: Counter.list
+ 
+17:47:04 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/kayboard_counter1.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/kayboard_counter1.d" -MT"Src/kayboard_counter1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/kayboard_counter1.o"
+arm-none-eabi-gcc -o "Counter.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\chase\Documents\winter_2026\embedded_systems\ES28W26\workspace\Counter\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Counter.elf
+ 
+arm-none-eabi-size  Counter.elf 
+arm-none-eabi-objdump -h -S Counter.elf  > "Counter.list"
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+Finished building: Counter.list
+ 
+17:48:19 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/kayboard_counter1.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/kayboard_counter1.d" -MT"Src/kayboard_counter1.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/kayboard_counter1.o"
+arm-none-eabi-gcc -o "Counter.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\chase\Documents\winter_2026\embedded_systems\ES28W26\workspace\Counter\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Counter.elf
+ 
+arm-none-eabi-size  Counter.elf 
+arm-none-eabi-objdump -h -S Counter.elf  > "Counter.list"
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+Finished building: Counter.list
+ 
+17:49:32 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-size  Counter.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+14:31:56 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/keyboard_counter.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/keyboard_counter.d" -MT"Src/keyboard_counter.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/keyboard_counter.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Device" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/chipheaders/Include" -I"C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Counter.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\chase\Documents\winter_2026\embedded_systems\ES28W26\workspace\Counter\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Counter.elf
+ 
+arm-none-eabi-size  Counter.elf 
+arm-none-eabi-objdump -h -S Counter.elf  > "Counter.list"
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 
+Finished building: Counter.list
+ 
+14:34:26 **** Incremental Build of configuration Debug for project Counter ****
+make -j4 all 
+arm-none-eabi-size  Counter.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5420	     92	   1908	   7420	   1cfc	Counter.elf
+Finished building: default.size.stdout
+ 

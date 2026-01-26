@@ -1,0 +1,107 @@
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{amsmath} 
+\usepackage{amsfonts} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage{caption}
+\usepackage{mdframed}
+\usepackage{comment}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage[shortlabels]{enumitem}
+\usepackage{titlesec}
+\usepackage{tikz}
+
+\usepackage{pdfpages}
+\includepdfset{pages=-}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead[L]{Soleil Demick}
+    \fancyhead[R]{ENGS 53 HW \#1}
+    \fancyhead[C]{\thepage}
+    \fancyfoot[]{}
+
+\usepackage{setspace}
+    % \doublespacing
+    \setlength{\parskip}{1em}
+    \setlength{\parindent}{0em}
+
+\newcommand{\captioncenter}{\captionsetup{justification=centering,margin=2cm}}
+\newcommand{\numberthis}{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Make every path printing in displaystyle, even inline
+\everymath{\displaystyle}
+\allowdisplaybreaks
+
+% Line break in tabular/array cell
+\newcommand{\specialcelltabular}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\specialcellarray}[2][c]{%
+  \begin{array}[#1]{@{}c@{}}#2\end{array}}
+
+% Macros
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\problem}[1]{\textbf{Problem #1}.}
+\newcommand{\todo}[1][]{[\textcolor{red}{TODO\ifstrempty{#1}{}{: #1}}]}
+\newcommand{\inv}{^{-1}}
+\renewcommand{\norm}[1]{\Vert{#1}\Vert}
+\DeclareMathOperator{\id}{id}
+\newcommand{\set}[1]{\left\{{#1}\right\}}
+\newcommand{\suchthat}{\mid}
+\newcommand{\forwardcase}{\(\boxed{\implies}\ \)}
+\newcommand{\backwardcase}{\(\boxed{\impliedby}\ \)}
+\newcommand{\subsc}[1]{_{\mathrm{#1}}}
+\renewcommand{\norm}[1]{\Vert{#1}\Vert}
+\newcommand{\innerprod}[2]{\left\langle{#1},{#2}\right\rangle}
+\newcommand{\expectedval}[1]{\langle{#1}\rangle}
+
+% Common symbols
+%% Blackboard bold symbols
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bC}{\mathbb{C}}
+
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bP}{\mathbb{P}}
+
+%% Assignment Specific Symbols
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\kB}{k\subsc{B}}
+\newcommand{\ptrans}{p_{\mathrm{e}\leftrightarrow\mathrm{g}}}
+\newcommand{\nbar}{\bar{n}}
+\newcommand{\eket}{\ket{e}}
+\newcommand{\gket}{\ket{g}}
+\newcommand{\Ne}{N\subsc{e}}
+\newcommand{\Ng}{N\subsc{g}}
+\newcommand{\Ebar}{\bar{E}}
+
+% Vectors
+\newcommand{\vN}{\vb{N}}
+\newcommand{\vS}{\vb{S}}
+\newcommand{\vp}{\vb{p}}
+\newcommand{\vq}{\vb{q}}
+\newcommand{\vL}{\vb{L}}
+
+% Dots, Tildes, Hats

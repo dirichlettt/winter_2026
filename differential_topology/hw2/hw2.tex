@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\problem{1}
+\begin{proposition}
+    Let \(M\) be a smooth manifold, \(p \in M,\) and \(X \in T_pM\) a derivation. Then
+    \begin{enumerate}[(1)]
+        \item If \(f := C\) is a constant function, then \(Xf = 0\).
+        \item If \(f(p) = 0 = g(p)\), then \(X(fg) = 0\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof} \phantom{}
+    \begin{enumerate}[(1)]
+        \item We have that
+        \begin{align*}
+            & X(1) = X(1 \cdot 1) = X(1) \cdot 1 + 1 \cdot X(1) = 2X(1)
+            \\ \implies
+            & X(1) = 0.
+        \end{align*}
+        By linearity, of derivations:
+        \begin{align*}
+            0 = CX(1) = X(C) = X(f).
+        \end{align*}
+
+        \item We have that
+        \begin{align*}
+            X(fg) = X(f) g(p) + f(p) X(g) = 0 \cdot X(f) + 0 \cdot X(g) = 0.
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\problem{2}
+\begin{proposition}
+    Let \(F : M \to N\) and \(G : N \to P\) be smooth maps between smooth manifolds, and let \(p \in M\). Then
+    \begin{enumerate}[(1)]
+        \item The map \(F_* : T_pM \to T_{F(p)}N\) is linear.
+        \item \((G \circ F)_* = G_* \circ F_*\).
+        \item \((\Id_M)_* = \Id_{T_pM}\).
+        \item If \(F\) is a diffeomorphism, then \(F_*\) is an isomorphism.
+    \end{enumerate}
+\end{proposition}
+\begin{proof} \phantom{}
+    \begin{enumerate}[(1)]
+        \item Let \(u, v \in T_pM\) be vectors, \(f \in C^\infty(N)\), and \(\alpha, \beta \in \bR\). Then
+        \begin{align*}
+            (F_*(\alpha u + \beta v))f
+            & = (\alpha u + \beta v)(f \circ F)
+            \\
+            & = \alpha u(f \circ F) + \beta v(f \circ F)
+            \\
+            & = \alpha (F_* u)f + \beta (F_* v)f.
+        \end{align*}
+        Therefore, \(F_*(\alpha u + \beta v) = \alpha F_*u + \beta F_*v\), that is, \(F_*\) is linear.
+
+        \item Let \(v \in T_p M\), \(f \in C^\infty(P)\). Then
+        \begin{align*}
+            ((G \circ F)_* v)f
+            & = v(f \circ (G \circ F))
+            \\
+            & = v((f \circ G) \circ F)
+            \\
+            & = (F_* v)(f \circ G)
+            \\
+            & = (G_* \circ (F_* v))f
+            \\
+            & = ((G_* \circ F_*) v)f.
+        \end{align*}
+        Thus \((G \circ F)_* = G_* \circ F_*\).
+
+        \item Let \(v \in T_pM\), \(f \in C^\infty(M)\). Then
+        \begin{align*}
+            ((\Id_M)_* v)f
+            & = v(f \circ \Id_M)
+            \\
+            & = v(f)
+            \\
+            & = (\Id_{T_pM} v)f.
+        \end{align*}
+        Thus \((\Id_M)_* = \Id_{T_pM}\).
+
+        \item Let \(F\) be a diffeomorphism. We show that \(F_*\) is injective and surjective. 
+        \begin{itemize}
+            \item (Injective) Let \(u,v \in T_pM\), and suppose \(F_*u = F_*v\). Then for all \(f \in C^\infty(N)\)
+            \begin{align*}
+                & (F_*u)f = (F_*v)f
+                \\ \implies
+                & (F_*(u-v))f = 0
+                \\ \implies
+                & (u - v)(f \circ F) = 0
+            \end{align*}
+            But \(f\) was arbitrary, and so \(u - v = 0\), thus \(u = v\).
+
+            \item (Surjective) Let \(v \in T_{F(p)} N\). Let \((y_1, \dots, y_n)\) be coordinates for a chart \((V, \psi)\) containing \(F(p)\), so \(v = v^i \pdv{y^i}\eval_{F(p)}\), where Einstein notation is being used. Let \(G\) be the inverse of \(F\), and \((x_1, \dots, x_m)\) be coordinates for a chart \((U, \phi)\) containing \(p = G(F(p))\). Then in coordinates, \(G_* v\) is given by
+            \begin{align*}
+                w := G_* v = v^i \pdv{\hat{G}^j}{y^i} \pdv{x^j} \eval_p
+            \end{align*}
+            Then, since \(G_*\) corresponds to a Jacobian which is the inverse of the Jacobian for \(F_*\), it follows that \(F_* w = v\).
+        \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\problem{3}
+\begin{proposition}
+    The tangent bundle of \(S^3\) is trivial.
+\end{proposition}
+\begin{proof}
+    We embed \(S^3\) into \(\bR^4\), which we identify with the quaternions. Consider the vector fields \(X_i : p \mapsto ip\), \(X_j : p \mapsto jp\), and \(X_k : p \mapsto kp\). We claim that these are sections of \(TS^3\). Writing \(p\) in coordinates:
+    \begin{align*}
+        p = x + iy + jz + kw.
+    \end{align*}
+    Then the vector fields are
+    \begin{align*}
+        & X_i = ip = -y + ix - jw + kz
+        \\
+        & X_j = jp = -z + iw + jx - ky
+        \\
+        & X_k = kp = -w - iz + jy + kx.
+    \end{align*}
+    For these vector fields to be sections of \(TS^3\), the vectors must be tangent to \(S^3\). The normal vectors of \(S^3\) are proportional to the position vectors \(p\), thus it suffices to check that the dot product of these vector fields with the position vector vanish. 
+    \begin{align*}
+        & \vp\vdot\vX_i = -xy + yx - zw + wz = 0
+        \\
+        & \vp\vdot\vX_j = -xz + yw + zx - wy = 0
+        \\
+        & \vp\vdot\vX_k = -xw - yz + zy + wx = 0.
+    \end{align*}
+    Thus \(\set{X_i, X_j, X_k}\), restricted to the surface of \(S^3\), are sections of \(TS^3\). We now claim that these vector fields are linearly independent. Suppose that for some \(a, b, c \in \bR^3\), \(aX_i + bX_j + cX_k = 0\). Then
+    \begin{align*}
+        & aip + bjp + ckp = 0
+        \\ \implies
+        & (ai + bj + ck)p = 0.
+    \end{align*}
+    As the quaternions are a division algebra, it follows that \(ai + bj + ck = 0\), thus \(a = b = c = 0\). Therefore, we have three linearly independent nonvanishing sections of \(TS^3\), hence \(TS^3\) is trivial.
+\end{proof}
+
+\problem{4}
+\begin{proposition}
+    The tautologial line bundle
+    \begin{align*}
+        E = \set{(l, v) \suchthat l \text{ is a line in } \bR^{n+1},\ v \in l \subset \bR^{n+1}}
+    \end{align*}
+    with projection map \(\pi(l, v) = l\) is a vector bundle.
+\end{proposition}
+\begin{proof}
+    We have base space \(\bR\bP^n\) and fibers given by the lines \(l\), which clearly have the structure of \(\bR^1\). It remains to find an open cover \(\set{U_\alpha}\) and trivializations \(\Phi_\alpha : \pi\inv(U_\alpha) \to U_\alpha \times \bR\) such that \(\Phi_\alpha|_l : E_l \to \set{l} \times \bR\) is a linear isomorphism.
+
+    We choose the following atlas \(\set{(U_i, \phi_i)}_{i=0}^n\) for \(\bR\bP^n\):
+    \begin{align*}
+        & U_i = \set{[x_0:\cdots:x_n] \suchthat x_i \neq 0}
+        \\
+        & \phi_i : U_i \to \bR^n,\ [x_0:\cdots:x_n] \mapsto \qty(\frac{x_0}{x_i}, \dots, \widehat{\frac{x_i}{x_i}}, \dots, \frac{x_n}{x_i}).
+    \end{align*}
+    We take as trivialization the projection of fibers attached to points in \(U_i\) onto the \(i\)-th axis. That is, consider a fiber
+    \begin{align*}
+        E_l = \set{(l, v) \suchthat v \in l}.
+    \end{align*}
+    In coordinates, \(l = [x_0 : \cdots : x_n]\) and \(v = (v_0, \dots, v_n)\). Then \(\Phi_i|_l : (l, v) \mapsto (l, v_i)\). We claim that this map is a linear isomorphism. 
+    
+    We claim this map has inverse
+    \begin{align*}
+        & \Phi_i|_l\inv : (l, y) = \qty(l, \frac{y}{x_i}\qty(x_0, \dots, x_n)).
+    \end{align*}
+    This map exists for all \(l \in U_i\) because \(x_i \neq 0\). We see that
+    \begin{align*}
+        \Phi_i|_l\inv \circ \Phi_i|_l (l, v)
+        & = \Phi_i|_l\inv (l, v_i)
+        \\
+        & = \qty(l, \frac{v_i}{x_i} (x_0, \dots, x_n))
+        \\
+        & = \qty(l, \qty(\frac{vx_0}{x_i}, \dots, \frac{vx_{i-1}}{x_i}, v, \frac{vx_{i+1}}{x_i}, \dots, \frac{vx_n}{x_i})).
+    \end{align*}
+    But as \(l \in U_i\), where \(U_i\) can be seen as the set of points in \(\bR^{n+1} \setminus \set{\mathcal{O}}\) not in the hyperplane \(x_i = 0\), then there is exactly one point on \(l\) with \(i\)-th coordinate \(v\), so the computation evaluates to \((l, v)\). Similarly, 
+    \begin{align*}
+        \Phi_i|_l \circ \Phi_i|_l\inv (l, y)
+        & = \Phi_i|_l \qty(l, \frac{y}{x_i} (x_0, \dots, x_n))
+        \\
+        & = \qty(l, \frac{y}{x_i}x_i)
+        \\
+        & = (l, y).
+    \end{align*}
+
+    Being a linear isomorphism directly follows. For injectivity, if \(\Phi_i|_l(l,v) = \Phi_i|_l(l,w)\), then \((l, v) = \Phi_i|_l \inv \circ \Phi_i|_l (l, v) = \Phi_i|_l \inv \circ \Phi_i|_l (l, w) = (l, w)\). And for surjectivity, one has that \((l, v) = \Phi_i|_l (\Phi_i|_l\inv(l, v))\) for all \((l, v) \in E_l\). Clearly \(\Phi_i|_l\) is differentiable in the coordinates of \(v\) and \(\Phi_i|_l\inv\) is differentiable in \(y\), and both are differentiable in the coordinates of \(l\) since \(x_i \neq 0\), thus \(\Phi_i|_l\) is a diffeomorphism. 
+\end{proof}
+The transition functions are 
+\begin{align*}
+    \Phi_i \circ \Phi_j\inv (l, y)
+    & = \Phi_i|_l \qty( l, \frac{y}{x_j}(x_0, \dots, x_n) )
+    \\
+    & = y\frac{x_i}{x_j},
+\end{align*}
+which exists since \(l \in U_j\).
+
+
+\problem{5}
+\begin{proposition}
+    Let \(M\) be a smooth manifold with or without boundary, \(p \in M\), \(C_p^\infty(M)\) the algebra of germs of smooth real-valued functions at \(p\), and \(\calD_pM\) the vector space of derivations of \(C_p^\infty(M)\). Consider the map \(\Phi : \calD_pM \to T_pM\) by \((\Phi v)f := v([f]_p)\).
+\end{proposition}
+\begin{proof}
+    We first show that \(\Phi\) is linear. Let \(\alpha, \beta \in \bR\), \(u,v \in \calD_pM\), and \(f \in C^\infty(M)\). Then 
+    \begin{align*}
+        (\Phi(\alpha u + \beta v))f
+        & = (\alpha u + \beta v)([f]_p)
+        \\
+        & = \alpha u([f]_p) + \beta v([f]_p)
+        \\
+        & = \alpha (\Phi u)f + \beta (\Phi v)f
+        \\
+        & = (\alpha \Phi u + \beta \Phi v)f.
+    \end{align*}
+    For injectivity, suppose \(\Phi u = \Phi v\). Then
+    \begin{align*}
+        & (\Phi u)f = (\Phi v f)
+        \\ \implies
+        & u([f]_p) = v([f]_p)
+        \\ \implies
+        & (u - v)([f]_p) = 0.
+    \end{align*}
+    Since \(f\) was arbitrary, it must be that \(u - v := 0\), and so \(u = v\). 
+    
+    For surjectivity, consider an arbitrary \(w \in T_pM\). Since all of the elements of \([f]_p\) are equal to \(f\) in a neighborhood of \(p\), and \(w(f)\) is a linear combination of evaluations \(\pdv{f}{x_i}(p)\), where \((x_1, \dots, x_n)\) are coordinates for \(M\) about \(p\), then \(w\) evaluates the same on all representatives of \([f]_p\). Therefore, we can define a derivation \(W\) on \(\calD_p M\) such that \(W([f]_p) = w(f)\). Thus \(\Phi W = w\).
+\end{proof}
+
+\problem{6}
+\begin{proposition}
+    The assignment \(M \mapsto TM\) and \(F \mapsto dF\) defines a covariant functor from \(\Diff\) to \(\VB\), where \(\VB\) are the category whose objects are smooth vector bundles and whose morphisms are smooth bundle homomorphisms, and \(\Diff\) the category whose objects are smooth manifolds and whose morphisms are smooth maps.
+\end{proposition}
+\begin{proof}
+    Let \(\Tang\) be the assignment in question, called the tangent functor. We must show that \(\Tang\) preserves identities and compositions. We showed above that \((\Id_M)_* = \Id_{T_pM}\) for all \(p \in M\) and each fiber \(T_pM\), thus \(\Tang(\Id_M) = (\Id_M, \Id_{T_pM}) = \Id_{TM}\). We also showed that the pushforward respects compositions, thus for smooth maps \(F : M \to N\) and \(G : N \to P\), where \(M, N,P\) are smooth,
+    \begin{align*}
+        \Tang(G \circ F) = (G \circ F, G_* \circ F_*) = \Tang(G) \circ \Tang(F).
+    \end{align*}
+\end{proof}
+
+
+\end{document}

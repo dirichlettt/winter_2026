@@ -1,0 +1,382 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\problem{1}
+
+\begin{enumerate}[(a)]
+    \item Assuming the ansatz \(E(x,t) = X(x) T(t)\), the wave equation becomes
+    \begin{align*}
+        & \pdv[2]{E}{x} = \frac{1}{c^2}\pdv[2]{E}{t}
+        \\ \implies
+        & X''(x)T(t) = \frac{1}{c^{2}}X(x)T''(t)
+        \\ \implies
+        & \frac{X''}{X} = \frac{1}{c^{2}}\frac{T''}{T}.
+    \end{align*}
+    As the LHS is a function of only \(x\) and the RHS is a function of only \(t\), both sides must be equal to some separation constant, which we define as \(-k^{2}\). Thus
+    \begin{align*}
+        & X'' = -k^{2}X
+        \\
+        & T'' = -c^{2}k^{2}T
+    \end{align*}
+    The solutions to each of these equations are
+    \begin{align*}
+        & X(x) = A\sin(kx) + B\cos(kx)
+        \\
+        & T(t) = C\sin(ckt) + D\cos(ckt).
+    \end{align*}
+    As we have the initial condition \(E(x,0) = X(x)T(0) = 0\), a nontrivial solution must have that \(T(0) = 0\), hence \(D = 0\) by substitution into the above equation. Thus
+    \begin{align*}
+        T(t) = C\sin(ckt).
+    \end{align*}
+
+    \item We thus have that \(E\) is of the form (absorbing \(C\) into the other constants):
+    \begin{align*}
+        & E(x,t) = (A\sin(kx) + B\cos(kx))\sin(ckt).
+    \end{align*}
+    Applying the boundary condition \(E(0, t) = 0\):
+    \begin{align*}
+        & 0 = B\sin(ckt)
+        \\ \implies
+        & 0 = B.
+    \end{align*}
+    Applying the boundary condition \(E(L, t) = 0\):
+    \begin{align*}
+        & 0 = A\sin(kL)\sin(ckt)
+        \\ \implies
+        & 0 = \sin(kL)
+        \\ \implies
+        & kL = n\pi, \ n = 1, 2, 3, \dots
+        \\ \implies
+        & k = \frac{n\pi}{L}. \ n = 1, 2, 3, \dots \numberthis \label{eq:wavenumber}
+    \end{align*}
+    We thus have a family of solutions indexed by \(n\):
+    \begin{align*}
+        E_{n}(x,t) = C_{n}\sin(\frac{n\pi}{L}x)\sin(\frac{cn\pi}{L}t).
+    \end{align*}
+    
+    \item Defining \(\omega = ck\), the allowed angular frequencies are 
+    \begin{align*}
+        \omega_n = \frac{cn\pi}{L}, \ n = 1, 2, 3, \dots
+    \end{align*}
+    For each mode of the wave, we define \(N\) as its index in order to count the number of possible modes. We want to know how a change in \(N\) leads to a change in the wavenumber \(k\). As the number of modes becomes very large, a small change is comparatively infinitesimal, and so we can approximately use the language of differentials. In 1D, from \eqref{eq:wavenumber}:
+    \begin{align*}
+        \dd{N} = \frac{L}{\pi}\dd{k}.
+    \end{align*}
+    In 3D, we can choose modes along each of the three axes, yielding an \((L/\pi)^3\) term. However, we also must account for polarization, thus 
+    \begin{align*}
+        \dd{N} = 2\qty(\frac{L}{\pi})^3 \dd[3]{k}.
+    \end{align*}
+    In abstract \(\vb{k}\)-space, we treat the volume element \(\dd[3]{k}\) as a spherical shell of radius \(k\) and width \(\dd{k}\) centered at the origin. We are only concerned with positive \(k\) values, so we pick up a factor of \(1/8\) as well:
+    \begin{align*}
+        \dd[3]{k} = \frac{2\pi k^2}{8}\dd{k}.
+    \end{align*}
+    As we are concerned with angular frequencies, we substitute \(k = \omega/c\):
+    \begin{align*}
+        \dd{N} = 2 \qty(\frac{L}{\pi})^3 \cdot \frac{4\pi (\omega/c)^2}{8} \cdot \frac{\dd{\omega}}{c} = \frac{L^3\omega^2}{\pi^2c^3} \dd{\omega}. \numberthis \label{eq:dN}
+    \end{align*}
+
+    \item We will use \autoref{eq:dN} to compute the energy density per unit \(\omega\), given as
+    \begin{align*}
+        \calU(\omega) = \frac{1}{L^3} \pdv{E}{\omega}.
+    \end{align*}
+    We can compute \(\dd{\omega}\) from above, now we ust need \(\dd{E}\). From the Equipartition Theorem, each degree of freedom in a statistical system has the same amount of energy:
+    \begin{align*}
+        E = \underbrace{\frac{1}{2}\kB T}_{\text{K.E.}} + \underbrace{\frac{1}{2}\kB T}_{\text{P.E.}} = \kB T,
+    \end{align*}
+    where \(\kB\) is Boltzmann's constant. Thus
+    \begin{align*}
+        \dd{E}
+        & = \kB \dd{T}
+        \\
+        & = \kB T \dd{N}
+        \\
+        & = \frac{L^3 \omega^2}{\pi^2 c^3} \dd{\omega}
+        \\ \implies
+        \pdv{E}{\omega} 
+        & = \frac{L^3 \omega^2}{\pi^2 c^3}.
+    \end{align*}
+    Therefore, we obtain the Rayleigh-Jeans law:
+    \begin{align*}
+        \calU(\omega)
+        = \frac{1}{L^3}\pdv{E}{\omega}
+        = \frac{\kB \omega^2 T}{\pi^2 c^3}.
+    \end{align*}
+
+    \item Suppose our black body is made of atoms with two energy levels, a ground state \(\gket\) and an excited state \(\eket\). Classically, the ratio between the number of systems in \(\eket\) vs the number in \(\gket\) is given by the Boltzmann distribution:
+    \begin{align*}
+        \frac{N_e}{\Ng} = e^{-E/(\kB T)}.
+    \end{align*}
+    Let \(\nbar\) count the average number of photons in the black box and \(\ptrans\) the probability of transitioning between either state. Then the absorption rate is \(\Ng\nbar\ptrans\), and the emission rate is \(\Ne(\nbar+1)\ptrans\). Assuming thermal equilibrium, the system must be in detailed balance, and so these rates must be the same:
+    \begin{align*}
+        & \Ng\nbar\ptrans = \Ne(\nbar+1)\ptrans
+        \\ \implies
+        & \frac{\nbar}{\nbar + 1} = \frac{\Ne}{\Ng} = e^{-E/(\kB T)}.
+    \end{align*}
+    Taking Planck's assumption that the atoms can only absorb or emit photons of discrete chunks \(E = \hbar\omega\), we get
+    \begin{align*}
+        & \frac{\nbar}{\nbar + 1} = e^{-E/(\kB T)}
+        \\ \implies
+        & \nbar = \frac{1}{e^{\hbar\omega/(\kB T)} - 1}.
+    \end{align*}
+    The total average energy of photons in the box is \(\Ebar = \nbar\hbar\omega\), thus
+    \begin{align*}
+        \Ebar = \frac{\hbar\omega}{e^{\hbar\omega/(\kB T)} - 1}.
+    \end{align*}
+    Counting photon states, we have that
+    \begin{align*}
+        \dd{E} 
+        & = \nbar\hbar\omega \dd{N}
+        \\
+        & = \nbar\hbar\omega \frac{L^3 \omega^2}{\pi^2 c^3} \dd{\omega}
+        \\ \implies
+        \pdv{E}{\omega}
+        & = \frac{L^3 \omega^2}{\pi^2 c^3} \frac{\hbar\omega}{e^{\hbar\omega/(\kB T)} - 1}.
+    \end{align*}
+    Calculating the energy density as before, we obtain Planck's law:
+    \begin{align*}
+        \calU(\omega) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar\omega/(\kB T)} - 1}.
+    \end{align*}
+\end{enumerate}
+
+\problem{2}
+
+\begin{enumerate}[(a)]
+    \item We consider the 1D infinite square well and solve the 1D Schr\"odinger equation
+    \begin{align*}
+        \qty[-\frac{\hbar}{2m}\pdv[2]{x} + V(x)] \psi(x,t) = i\hbar\pdv{t} \psi(x,t),
+    \end{align*}
+    where the potential energy function is
+    \begin{align*}
+        V(x) = \begin{cases}
+            0, & x \in [0, L] \\
+            \infty, & \text{otherwise}.
+        \end{cases}
+    \end{align*}
+    In effect, the form of \(V\) enforces that \(\psi = 0\) outside of \([0,L]\) and the boundary conditions \(\psi(0, t) = \psi(L, t) = 0\), thus we only need to solve for the wavefunction within the well. Taking the ansatz \(\psi(x,t) = X(x) T(t)\), we get
+    \begin{align*}
+        & -\frac{\hbar^2}{2m}X''(x) T(t) = i\hbar X(x) T'(t)
+        \\ \implies
+        & -\frac{\hbar^2}{2m}\frac{X''(x)}{X(x)} = i\hbar \frac{T'(t)}{T(t)} := E,
+    \end{align*}
+    where \(E\) is a constant. Thus
+    \begin{align*}
+        & X''(x) = -\frac{2mE}{\hbar^2} X(x),
+        \\
+        & T'(t) = -\frac{iE}{\hbar}T(t).
+    \end{align*}
+    Solving the time component:
+    \begin{align*}
+        T(t) = C\exp(-\frac{iE}{\hbar}t).
+    \end{align*}
+    Solving the spatial component:
+    \begin{align*}
+        X(x) = A\sin(\frac{\sqrt{2mE}}{\hbar} x) + B\cos(\frac{\sqrt{2mE}}{\hbar} x).
+    \end{align*}
+    Therefore (absorbing \(C\)) into the other integration factors
+    \begin{align*}
+        \psi(x,t)
+        & = \exp(-\frac{iE}{\hbar}t) \qty[ A\sin(\frac{\sqrt{2mE}}{\hbar} x) + B\cos(\frac{\sqrt{2mE}}{\hbar} x) ].
+    \end{align*}
+    Applying \(\psi(0, t) = 0\):
+    \begin{align*}
+        & 0 = \exp(-\frac{iE}{\hbar}t) \cdot B
+        \\ \implies
+        & B = 0.
+    \end{align*}
+    Then, applying \(\psi(L, t) = 0\):
+    \begin{align*}
+        & 0 = A\exp(-\frac{iE}{\hbar}t) \sin(\frac{\sqrt{2mE}}{\hbar} L)
+        \\ \implies
+        & 0 = \sin(\frac{\sqrt{2mE}}{\hbar} L) 
+        \\ \implies
+        \frac{\sqrt{2mE}}{\hbar} L & = n\pi, \ n = 1, 2, 3, \dots
+        \\ \implies
+        E_n & = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \ n = 1, 2, 3, \dots
+    \end{align*}
+    Thus the non-normalized solutions are of the form
+    \begin{align*}
+        \psi_n(x,t) = A_n \exp(-\frac{iE_n}{\hbar}t)\sin(\frac{n\pi}{L}x).
+    \end{align*}
+    Normalization entails that \(\norm{\psi_n}_{L^2} = 1\), where \(\norm{\cdot}_{L^2}\) is the \(L^2(\bR)\)-norm. Thus
+    \begin{align*}
+        1
+        & = \norm{\psi_n}^2_{L^2}
+        \\
+        & = \int_{\bR} \dd{x} \psi_n^* \psi_n
+        \\
+        & = \int_{[0, L]} \dd{x} \psi_n^* \psi_n \quad (\mathrm{supp}(\psi_n) = [0,L])
+        \\
+        & = \int_0^L \dd{x} A_n^*\exp(\frac{iE_n}{\hbar}t)\sin(\frac{n\pi}{L}x) A_n \exp(-\frac{iE_n}{\hbar}t)\sin(\frac{n\pi}{L}x)
+        \\
+        & = \abs{A_n}^2 \int_0^L \dd{x} \sin[2](\frac{n\pi}{L}x)
+        \\
+        & = \abs{A_n}^2 \int_0^L \dd{x} \frac{1-\cos(\frac{2n\pi}{L}x)}{2}
+        \\
+        & = \frac{L}{2}\abs{A_n}^2
+        \\ \implies
+        \abs{A_n}
+        & = \sqrt{\frac{2}{L}}.
+    \end{align*}
+    By linearity of the Schr\"odinger equation, a general solution \(\psi\) can be built via a series expansion 
+    \begin{align*}
+        \psi = \sum_n c_n \psi_n.
+    \end{align*}
+    Without loss of generality we can move any complex phase factor of \(A_n\) to the coefficient \(c_n\) and assume that \(A_n\) is real and nonnegative, hence \(A_n := \sqrt{2/L}\). Thus the basis eigenfunctions and their corresponding energies are
+    \begin{align*}
+        & \psi_n(x,t) = \sqrt{\frac{2}{L}} \exp(-\frac{iE_n}{\hbar}t)\sin(\frac{n\pi}{L}x),
+        \\
+        & E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \ n = 1, 2, 3, \dots
+    \end{align*}
+    Orthogonality of the basis \(\set{\psi_n}\) follows from the orthogonality of the subset \(\set{\sin(\pi n x/L)}\) of the Fourier basis. Thus for the general solution to be normalized:
+    \begin{align*}
+        1 
+        & = \norm{\psi}_{L^2}^2
+        \\
+        & = \innerprod{\psi}{\psi}_{L^2}
+        \\
+        & = \innerprod{\sum_m c_m \psi_m}{\sum_n c_n \psi_n}_{L^2}
+        \\
+        & = \sum_{m,n} c_m^* c_n \innerprod{\psi_m}{\psi_n}
+        \\
+        & = \sum_{m,n} c_m^* c_n \delta_{m,n}
+        \\
+        & = \sum_{m} \abs{c_m}^2
+        \\
+        & = \norm{c}_{\ell^2}^2
+        \\ \implies
+        \norm{c}_{\ell^2}
+        & = 1,
+    \end{align*}
+    where \(\innerprod{\cdot}{\cdot}_{L^2}\) is the \(L^2\)-inner product, \(\norm{\cdot}_{\ell^2}\) is the \(\ell^2\)-norm, and \(c\) is the (possibly finite or infinite) coefficient sequence \(c = (c_1, c_2, c_3, \dots)\).
+
+    \item
+    \begin{enumerate}[(A)]
+        \item As per the conditions above, we require \(1 = \sqrt{A^2 + A^2}\), thus \(A = 1/\sqrt{2}\), and so
+        \begin{align*}
+            \Psi(x, 0) = \frac{1}{\sqrt{2}}\psi_1(x) + \frac{1}{\sqrt{2}}\psi_2(x).
+        \end{align*}
+
+        \item The coefficients in the series expansion do not change with time, so 
+        \begin{align*}
+            \Psi(x, t) 
+            & = \frac{1}{\sqrt{2}}\psi_1(x,t) + \frac{1}{\sqrt{2}}\psi_2(x,t)
+            \\
+            & = \frac{1}{\sqrt{L}} \exp(-\frac{iE_1}{\hbar}t)\sin(\frac{\pi}{L}x) + \frac{1}{\sqrt{L}} \exp(-\frac{iE_2}{\hbar}t)\sin(\frac{2\pi}{L}x)
+        \end{align*}
+        and
+        \begin{align*}
+            \abs{\Psi(x,t)}^2
+            & = \frac{1}{L}\sin[2](\frac{\pi}{L}x) 
+            \\
+            & \quad + \frac{1}{L}\exp(\frac{i(E_1-E_2)t}{\hbar})\sin(\frac{\pi}{L}x)\sin(\frac{2\pi}{L}x) 
+            \\
+            & \quad + \frac{1}{L}\exp(\frac{i(E_2-E_1)t}{\hbar})\sin(\frac{2\pi}{L}x)\sin(\frac{\pi}{L}x)
+            \\
+            & \quad + \frac{1}{L}\sin[2](\frac{2\pi}{L}x)
+            \\
+            & = \frac{1}{L} \qty[ \sin[2](\frac{\pi}{L}x) + \sin[2](\frac{2\pi}{L}x) + 2\cos(\frac{E_1 - E_2}{\hbar}t)\sin(\frac{\pi}{L}x)\sin(\frac{2\pi}{L}x) ]
+            \\
+            & = \frac{1}{L} \qty[ \sin[2](\frac{\pi}{L}x) + \sin[2](\frac{2\pi}{L}x) + 2\cos((1^2\omega - 2^2\omega)t)\sin(\frac{\pi}{L}x)\sin(\frac{2\pi}{L}x) ]
+            \\
+            & = \frac{1}{L} \qty[ \sin[2](\frac{\pi}{L}x) + \sin[2](\frac{2\pi}{L}x) + 2\cos(3\omega t)\sin(\frac{\pi}{L}x)\sin(\frac{2\pi}{L}x) ] .
+        \end{align*}
+
+        \item We have that
+        \begin{align*}
+            \expectedval{x}
+            & = \int_{\bR} \dd{x} \psi^* x \psi
+            \\
+            & = \frac{1}{L}\int_0^L \dd{x} x \qty[ \sin[2](\frac{\pi}{L}x) + \sin[2](\frac{2\pi}{L}x) + 2\cos(3\omega t)\sin(\frac{\pi}{L}x)\sin(\frac{2\pi}{L}x) ]
+            \\
+            & = \frac{1}{L} \int_0^L \dd{x} x \qty[ \frac{1 - \cos(\frac{2\pi}{L} x)}{2} + \frac{1 - \cos(\frac{4\pi}{L} x)}{2} + \cos(3\omega t) \qty(\cos(\frac{\pi}{L} x) - \cos(\frac{3\pi}{L} x)) ]
+            \\
+            & = 1 - \frac{1}{2L} \int_0^L \dd{x} \qty( x \qty[ \cos(\frac{2\pi}{L} x) + \cos(\frac{4\pi}{L} x) ] ) 
+            \\
+            & \quad + \frac{\cos(3\omega t)}{L} \int_0^L \dd{x} x\qty(\cos(\frac{\pi}{L} x) - \cos(\frac{3\pi}{L} x))
+            \\
+            & = 1 - \frac{1}{2L} \qty[
+                \frac{\cos(\frac{2\pi}{L}x)}{(2\pi/L)^2} 
+                + \frac{x\sin(\frac{2\pi}{L}x)}{(2\pi/L)} 
+                + \frac{\cos(\frac{4\pi}{L}x)}{(4\pi/L)^2} 
+                + \frac{x\sin(\frac{4\pi}{L}x)}{(4\pi/L)}
+            ] \eval_0^a
+            \\
+            & \quad + \frac{\cos(3\omega t)}{L} \qty[ 
+                \frac{\cos(\frac{\pi}{L}x)}{(\pi/L)^2} 
+                + \frac{x\sin(\frac{\pi}{L}x)}{(\pi/L)} 
+                + \frac{\cos(\frac{3\pi}{L}x)}{(3\pi/L)^2} 
+                + \frac{x\sin(\frac{3\pi}{L}x)}{(3\pi/L)}
+            ] \eval_{x=0}^a
+            \\
+            & = 1 - \frac{1}{2L} \qty[ 
+                \frac{\cos(\frac{2\pi a}{L}) - 1}{(2\pi/L)^2} 
+                + \frac{a\sin(\frac{2\pi a}{L})}{(2\pi/L)} 
+                + \frac{\cos(\frac{4\pi a}{L}) - 1}{(4\pi/L)^2} 
+                + \frac{a\sin(\frac{4\pi a}{L})}{(4\pi/L)}
+             ]
+            \\
+            & \quad + \frac{\cos(3\omega t)}{L} \qty[ 
+                \frac{\cos(\frac{\pi a}{L}) - 1}{(\pi/L)^2} 
+                + \frac{a\sin(\frac{\pi a}{L})}{(\pi/L)} 
+                + \frac{\cos(\frac{3\pi a}{L} - 1)}{(3\pi/L)^2} 
+                + \frac{\sin(\frac{3\pi a}{L})}{(3\pi/L)}
+            ]
+        \end{align*}
+        The frequency of oscillation is \(3\omega\). The amplitude of oscillation is
+        \begin{align*}
+            \frac{1}{L} \qty[ 
+                \frac{\cos(\frac{\pi a}{L}) - 1}{(\pi/L)^2} 
+                + \frac{a\sin(\frac{\pi a}{L})}{(\pi/L)} 
+                + \frac{\cos(\frac{3\pi a}{L} - 1)}{(3\pi/L)^2} 
+                + \frac{\sin(\frac{3\pi a}{L})}{(3\pi/L)}
+            ] \quad (\textcolor{red}{????}).
+        \end{align*}
+
+        \item The expected value of momentum can be computed as
+        \begin{align*}
+            \expectedval{p}
+            & = \dv{t}\expectedval{x}
+            \\
+            & = \frac{-3\omega\sin(3\omega t)}{L} \qty[ 
+                \frac{\cos(\frac{\pi a}{L}) - 1}{(\pi/L)^2} 
+                + \frac{a\sin(\frac{\pi a}{L})}{(\pi/L)} 
+                + \frac{\cos(\frac{3\pi a}{L} - 1)}{(3\pi/L)^2} 
+                + \frac{\sin(\frac{3\pi a}{L})}{(3\pi/L)}
+            ] .
+        \end{align*}
+        
+        \item You might get \(E_1\) or \(E_2\). The expectation value is
+        \begin{align*}
+            \expectedval{H}
+            & = \qty(\frac{1}{\sqrt{2}})^2 E_1 + \qty(\frac{1}{\sqrt{2}})^2 E_2
+            \\
+            & = \frac{E_1 + E_2}{2},
+        \end{align*}
+        which is their mean.
+    \end{enumerate}
+
+    \item The probability of finding the particle in \([0, L/a]\) is
+    \begin{align*}
+        P_n([0, L/a])
+        & = \int_0^a \dd{x} \psi_n^* \psi_n
+        \\
+        & = \frac{2}{L} \int_0^a \sin[2](\frac{n\pi}{L} x)
+        \\
+        & = \frac{2}{L} \int_0^a \frac{1 - \cos(\frac{2n\pi}{L} x)}{2}
+        \\
+        & = \frac{1}{L} \qty[ x - \frac{L}{2n\pi} \sin(\frac{2n\pi}{L}x) ]\eval_0^a
+        \\
+        & = \frac{1}{L} \qty[ a - \frac{L}{2n\pi} \sin(\frac{2n\pi a}{L}) ].
+    \end{align*}
+
+    \item As \(n \to \infty\), the second term vanishes, leaving \(P_n = a/L\). If the particle were a classical one, bouncing around randomly in the square well, one would also expect it to be in \([0, a]\) around a proportion \(a/L\) of the time. This suggests that quantum mechanical objects begin to behave classically when highly excited.
+\end{enumerate}
+
+
+
+
+\end{document}
