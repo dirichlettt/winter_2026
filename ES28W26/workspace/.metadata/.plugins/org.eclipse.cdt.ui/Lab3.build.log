@@ -1,0 +1,17 @@
+21:14:45 **** Incremental Build of configuration Debug for project Lab3 ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/SolenoidLatch.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C0316_DK -DSTM32C031xx -c -I../Inc -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Device" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Include" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/SolenoidLatch.d" -MT"Src/SolenoidLatch.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/SolenoidLatch.o"
+arm-none-eabi-gcc -o "Lab3.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/workspace/Lab3/STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab3.elf
+ 
+arm-none-eabi-size  Lab3.elf 
+arm-none-eabi-objdump -h -S Lab3.elf  > "Lab3.list"
+   text	   data	    bss	    dec	    hex	filename
+   1320	      0	   1568	   2888	    b48	Lab3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab3.list
+ 
+
+21:14:46 Build Finished. 0 errors, 0 warnings. (took 835ms)
+

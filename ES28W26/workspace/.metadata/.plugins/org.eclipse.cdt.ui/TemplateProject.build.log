@@ -1,0 +1,16 @@
+16:10:15 **** Incremental Build of configuration Debug for project TemplateProject ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Device" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Include" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Device" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Include" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/test.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DNUCLEO_C031C6 -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C031xx -c -I../Inc -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Device" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Include" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/test.d" -MT"Src/test.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/test.o"
+In file included from ../Src/test.c:8:
+/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib/ES28.h:11:10: fatal error: stm32C0xx.h: No such file or directory
+   11 | #include "stm32C0xx.h"
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/test.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+16:10:16 Build Failed. 3 errors, 0 warnings. (took 718ms)
+

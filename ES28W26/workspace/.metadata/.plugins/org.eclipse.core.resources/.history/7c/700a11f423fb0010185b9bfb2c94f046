@@ -1,0 +1,60 @@
+/*
+ * Soleil Demick
+ * ES28W26 Lab 3
+ * SolenoidButton.c
+ * Description:
+ * Activates a solenoid from an external button input
+ *
+ * Pins used:
+ *   PB4 - output, controls transistor
+ *   PB5 - input, external button
+ *
+ *
+ */
+
+// Includes
+#include "ES28.h"
+#include "uart.h"
+#include <stdio.h>
+
+#define GPIOBEN (1U<<1) // enable clock access to port B
+
+#define TRANSISTOR_PIN (1U<<4)
+#define BUTTON_PIN (1U<<5)
+
+
+int main(void) {
+	uart2_init();
+
+	RCC->IOPENR |= GPIOBEN;
+
+	// Set transistor pin as output
+	GPIOB->MODER &= ~GPIO_MODER_MODE4_Msk;
+	GPIOB->MODER |= (GPIO_OUTPUT << GPIO_MODER_MODE4_Pos);
+
+	// Set button pin as input
+	GPIOB->MODER &= ~GPIO_MODER_MODE5_Msk;
+	GPIOB->MODER |= (GPIO_INPUT << GPIO_MODER_MODE5_Pos);
+
+	// Enable pullup resistors on button pin
+	GPIOB->PUPDR &= ~GPIO_PUPDR_PUPD5_Msk;
+	GPIOB->PUPDR |= (GPIO_PULLUP << GPIO_PUPDR_PUPD5_Pos);
+
+	unsigned button_down = 0;
+
+	while (1) {
+		// poll button
+		button_down = ((GPIOB->IDR & BUTTON_PIN) == 0);
+//		printf("%d,%d\r\n", (int)GPIOB->IDR, (int)BUTTON_PIN);
+
+		// Open transistor gate if button is down
+		if (button_down) {
+			GPIOB->ODR |= TRANSISTOR_PIN;
+//			printf("Button pressed\r\n");
+		} else {
+			GPIOB->ODR &= ~TRANSISTOR_PIN;
+		}
+
+	}
+	return 0;
+}

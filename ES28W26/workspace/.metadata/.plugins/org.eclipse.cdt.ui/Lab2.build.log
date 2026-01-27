@@ -1,0 +1,7 @@
+16:20:06 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j4 all 
+Src/ReactionTime.d:1: *** multiple target patterns.  Stop.
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+16:20:06 Build Failed. 1 errors, 0 warnings. (took 268ms)
+

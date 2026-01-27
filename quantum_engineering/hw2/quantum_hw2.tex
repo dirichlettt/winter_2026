@@ -7,31 +7,31 @@
 
 \problem{1}
 \begin{enumerate}[(a)]
-    \item We assume the marble is a quantum particle with the given mass and energy in a well of the given length. From the energy levels of the infinite square well:
-    \begin{align*}
-        E_n & = \frac{\hbar^2n^2\pi^2}{2mL^2}
-        \\ \implies
-        n 
+\item We assume the marble is a quantum particle with the given mass and energy in a well of the given length. From the energy levels of the infinite square well:
+  \begin{align*}
+    E_n & = \frac{\hbar^2n^2\pi^2}{2mL^2}
+    \\ \implies
+    n 
         & = \sqrt{\frac{2mL^2 E_n^2}{\hbar^2\pi^2}} 
-        \\
+    \\
         & = \frac{\sqrt{2m}LE_n}{\hbar \pi}
-        \\
+    \\
         & = \frac{\sqrt{2(1\e{-3}\kg)} (1\e{-2}\m) (1\e{-3}\J)}{(1.05\e{-34}\J\cdot\s) \pi}
-        \\
+    \\
         & = 1.356\e{27}.
-    \end{align*}
+  \end{align*}
 
-    \item The excitation energy is
-    \begin{align*}
-        E_{n+1} - E_n
-        & = \frac{\hbar^2\pi^2}{2mL^2} [(n+1)^2 - n^2]
-        \\
-        & = \frac{(2n+1)\hbar^2\pi^2}{2mL^2}
-        \\
-        & = \frac{[2(1.356\e{27}) + 1] (1.05\e{-34}\J\cdot\s)^2 \pi^2}{2(1\e{-3}\kg) (1\e{-2}\m)^2}
-        \\
-        & = 0.141\J.
-    \end{align*}
+\item The excitation energy is
+  \begin{align*}
+    E_{n+1} - E_n
+    & = \frac{\hbar^2\pi^2}{2mL^2} [(n+1)^2 - n^2]
+    \\
+    & = \frac{(2n+1)\hbar^2\pi^2}{2mL^2}
+    \\
+    & = \frac{[2(1.356\e{27}) + 1] (1.05\e{-34}\J\cdot\s)^2 \pi^2}{2(1\e{-3}\kg) (1\e{-2}\m)^2}
+    \\
+    & = 0.141\J.
+  \end{align*}
 \end{enumerate}
 
 \problem{2}
@@ -39,126 +39,163 @@
 
 \problem{3}
 \begin{enumerate}[(a)]
-    \item We have that
-    \begin{align*}
-        \expectedval{x}
-        & = \int_0^L \dd{x} \psi_n^* x \psi_n
-        \\
-        & = \frac{2}{L} \int_0^L \dd{x} x\sin(\frac{n\pi x}{L})^2
-        \\
-        & = \frac{1}{L} \int_0^L \dd{x} x \qty[ 1 - \cos(\frac{2n\pi x}{L}) ]
-        \\
-        & = \frac{1}{L} \cdot \frac{L^2}{2} - \int_0^L \dd{x} x\cos(\frac{2n\pi x}{L})
-        \\
-        & = \frac{L}{2} - \qty[ x\frac{L}{2n\pi} \sin(\frac{2n\pi x}{L}) + \qty(\frac{L}{2n\pi})^2 \cos(\frac{2n\pi x}{L})]\eval_0^L \quad (\text{repeated IBP})
-        \\
-        & = \frac{L}{2}.
-    \end{align*}
+\item We have that
+  \begin{align*}
+    \expectedval{x}
+    & = \int_0^L \dd{x} \psi_n^* x \psi_n
+    \\
+    & = \frac{2}{L} \int_0^L \dd{x} x\sin(\frac{n\pi x}{L})^2
+    \\
+    & = \frac{1}{L} \int_0^L \dd{x} x \qty[ 1 - \cos(\frac{2n\pi x}{L}) ]
+    \\
+    & = \frac{1}{L} \cdot \frac{L^2}{2} - \int_0^L \dd{x} x\cos(\frac{2n\pi x}{L})
+    \\
+    & = \frac{L}{2} - \qty[ x\frac{L}{2n\pi} \sin(\frac{2n\pi x}{L}) + \qty(\frac{L}{2n\pi})^2 \cos(\frac{2n\pi x}{L})]\eval_0^L \quad (\text{repeated IBP})
+    \\
+    & = \frac{L}{2}.
+  \end{align*}
 
-    \item The momentum operator is \(\hat{p} = (\hbar/i)\pdv*{x}\), thus
-    \begin{align*}
-        \expectedval{p}
-        & = \int_0^L \dd{x} \psi_n^* \frac{\hbar}{i} \pdv{x} \psi_n
-        \\
-        & = \frac{\hbar}{i}\frac{2}{L}\frac{n\pi}{L} \int_0^L \dd{x} \sin(\frac{n\pi x}{L})\cos(\frac{n\pi x}{L})
-        \\
-        & = \frac{2n\pi \hbar}{iL^2} \int_0^L \dd{x} \sin(\frac{2n\pi x}{L})
-        \\
-        & = 0.
-    \end{align*}
+\item The momentum operator is \(\hat{p} = (\hbar/i)\pdv*{x}\), thus
+  \begin{align*}
+    \expectedval{p}
+    & = \int_0^L \dd{x} \psi_n^* \frac{\hbar}{i} \pdv{x} \psi_n
+    \\
+    & = \frac{\hbar}{i}\frac{2}{L}\frac{n\pi}{L} \int_0^L \dd{x} \sin(\frac{n\pi x}{L})\cos(\frac{n\pi x}{L})
+    \\
+    & = \frac{2n\pi \hbar}{iL^2} \int_0^L \dd{x} \sin(\frac{2n\pi x}{L})
+    \\
+    & = 0.
+  \end{align*}
 
-    \item We have that
-    \begin{align*}
-        \expectedval{x^2}
-        & = \int_0^L \dd{x} \psi_n^* x^2 \psi_n
-        \\
-        & = \frac{2}{L} \int_0^L \dd{x} x^2 \sin(\frac{n\pi x}{L})^2
-        \\
-        & = \frac{1}{L} \int_0^L \dd{x} x^2 \qty[ 1 - \cos(\frac{2n\pi x}{L}) ]
-        \\
-        & = \frac{1}{L} \cdot \frac{L^3}{3} - \frac{1}{L}\int_0^L \dd{x} x^2 \cos(\frac{2n\pi x}{L})
-        \\
-        & = \frac{L^2}{3} - \frac{1}{L}\qty[ x^2\frac{L}{2n\pi}\sin(\frac{2n\pi x}{L}) + 2x\qty(\frac{L}{2n\pi})^2 \cos(\frac{2n\pi x}{L}) + 2\qty(\frac{L}{2n\pi})^3 \sin(\frac{2n\pi x}{L})]\eval_0^L
-        \\
-        & = \frac{L^2}{3} - 2 \qty(\frac{L}{2n\pi})^2
-        \\
-        & = \frac{(2n^2\pi^2 - 3)L^2}{6n^2\pi^2} .
-    \end{align*}
+\item We have that
+  \begin{align*}
+    \expectedval{x^2}
+    & = \int_0^L \dd{x} \psi_n^* x^2 \psi_n
+    \\
+    & = \frac{2}{L} \int_0^L \dd{x} x^2 \sin(\frac{n\pi x}{L})^2
+    \\
+    & = \frac{1}{L} \int_0^L \dd{x} x^2 \qty[ 1 - \cos(\frac{2n\pi x}{L}) ]
+    \\
+    & = \frac{1}{L} \cdot \frac{L^3}{3} - \frac{1}{L}\int_0^L \dd{x} x^2 \cos(\frac{2n\pi x}{L})
+    \\
+    & = \frac{L^2}{3} - \frac{1}{L}\qty[ x^2\frac{L}{2n\pi}\sin(\frac{2n\pi x}{L}) + 2x\qty(\frac{L}{2n\pi})^2 \cos(\frac{2n\pi x}{L}) + 2\qty(\frac{L}{2n\pi})^3 \sin(\frac{2n\pi x}{L})]\eval_0^L
+    \\
+    & = \frac{L^2}{3} - 2 \qty(\frac{L}{2n\pi})^2
+    \\
+    & = \frac{(2n^2\pi^2 - 3)L^2}{6n^2\pi^2} .
+  \end{align*}
 
-    \item We have that
-    \begin{align*}
-        \expectedval{p^2}
-        & = -\hbar^2 \int_0^L \dd{x} \psi_n^*\pdv[2]{x}\psi_n
-        \\
-        & = \hbar^2 \frac{2}{L}\frac{n^2\pi^2}{L^2} \int_0^L \dd{x} \sin(\frac{n\pi x}{L})^2
-        \\
-        & = \frac{n^2\pi^2\hbar^2}{L^3} \int_0^L \dd{x} \qty[ 1 - \cos(\frac{n\pi x}{L}) ]
-        \\
-        & = \frac{n^2 \pi^2 \hbar^2}{L^2}.
-    \end{align*}
+\item We have that
+  \begin{align*}
+    \expectedval{p^2}
+    & = -\hbar^2 \int_0^L \dd{x} \psi_n^*\pdv[2]{x}\psi_n
+    \\
+    & = \hbar^2 \frac{2}{L}\frac{n^2\pi^2}{L^2} \int_0^L \dd{x} \sin(\frac{n\pi x}{L})^2
+    \\
+    & = \frac{n^2\pi^2\hbar^2}{L^3} \int_0^L \dd{x} \qty[ 1 - \cos(\frac{n\pi x}{L}) ]
+    \\
+    & = \frac{n^2 \pi^2 \hbar^2}{L^2}.
+  \end{align*}
 
-    \item By definition,
-    \begin{align*}
-        \Delta x
-        & = \sqrt{\expectedval{x^2} - \expectedval{x}^2}
-        \\
-        & = \sqrt{ \frac{(2n^2\pi^2 - 3)L^2}{6n^2\pi^2} - \frac{L^2}{4} }
-        \\
-        & = L \sqrt{ \frac{4(2n^2\pi^2 - 3) - 6n^2\pi^2}{24n^2\pi^2} }
-        \\
-        & = \frac{L}{n\pi} \sqrt{ \frac{2n^2\pi^2 - 3}{24} }.
-    \end{align*}
+\item By definition,
+  \begin{align*}
+    \Delta x
+    & = \sqrt{\expectedval{x^2} - \expectedval{x}^2}
+    \\
+    & = \sqrt{ \frac{(2n^2\pi^2 - 3)L^2}{6n^2\pi^2} - \frac{L^2}{4} }
+    \\
+    & = L \sqrt{ \frac{4(2n^2\pi^2 - 3) - 6n^2\pi^2}{24n^2\pi^2} }
+    \\
+    & = \frac{L}{n\pi} \sqrt{ \frac{2n^2\pi^2 - 3}{24} }.
+  \end{align*}
 
-    \item By definition,
-    \begin{align*}
-        \Delta p
-        & = \sqrt{\expectedval{p^2} - \expectedval{p}^2}
-        \\
-        & = \sqrt{\frac{n^2\pi^2\hbar^2}{L^2}}
-        \\
-        & = \frac{n\pi\hbar}{L}.
-    \end{align*}
+\item By definition,
+  \begin{align*}
+    \Delta p
+    & = \sqrt{\expectedval{p^2} - \expectedval{p}^2}
+    \\
+    & = \sqrt{\frac{n^2\pi^2\hbar^2}{L^2}}
+    \\
+    & = \frac{n\pi\hbar}{L}.
+  \end{align*}
 
-    \item Thus
-    \begin{align*}
-        \Delta x \Delta p
-        & = \hbar \sqrt{\frac{2n^2\pi^2 - 3}{24}}
-        \\
-        & = \frac{\hbar}{2} \sqrt{\frac{2n^2 \pi^2 - 3}{6}}.
-    \end{align*}
-    The lowest this value can possibly be is when \(n = 1\), where
-    \begin{align*}
-        \Delta x \Delta p
-        = \frac{\hbar}{2} \sqrt{\frac{2\pi^2 - 3}{6}}
-        \approx 1.67 \cdot \frac{\hbar}{2}.
-    \end{align*}
+\item Thus
+  \begin{align*}
+    \Delta x \Delta p
+    & = \hbar \sqrt{\frac{2n^2\pi^2 - 3}{24}}
+    \\
+    & = \frac{\hbar}{2} \sqrt{\frac{2n^2 \pi^2 - 3}{6}}.
+  \end{align*}
+  The lowest this value can possibly be is when \(n = 1\), where
+  \begin{align*}
+    \Delta x \Delta p
+    = \frac{\hbar}{2} \sqrt{\frac{2\pi^2 - 3}{6}}
+    \approx 1.67 \cdot \frac{\hbar}{2}.
+  \end{align*}
 \end{enumerate}
 
 
 \problem{4}
 \begin{enumerate}[(a)]
-    \item We have that
+  \item We have that
     \begin{align*}
-        \expectedval{x}
-        & = \int_\bR \dd{x} \psi_0^* x \psi_0
-        \\
-        & = C_0^2 \int_\bR \dd{x} x e^{-2ax^2}
-        \\
-        & = 0 \quad (\text{odd function}).
+      \expectedval{x}
+      & = \int_\bR \dd{x} \psi_0^* x \psi_0
+      \\
+      & = C_0^2 \int_\bR \dd{x} x e^{-2ax^2}
+      \\
+      & = 0 \quad (\text{odd function}).
+    \end{align*}
+    
+
+  \item We have that
+    \begin{align*}
+      \expectedval{p}
+      & = \frac{\hbar}{i} \int_\bR \dd{x} \psi_0^* \pdv{x} \psi_0
+      \\
+      & = -\frac{2a\hbar}{i} \int_\bR \dd{x} xe^{-2ax^2}
+      \\
+      & = 0 \quad (\text{odd function}).
     \end{align*}
 
-    \item We have that
+
+  \item We have that
     \begin{align*}
-        \expectedval{p}
-        & = \frac{\hbar}{i} \int_\bR \dd{x} \psi_0^* \pdv{x} \psi_0
-        \\
-        & = \frac{-4a\hbar}{i} \int_\bR \dd{x} x^2 e^{-2ax^2}
-        \\
-        & = \frac{-4a\hbar}{i} \qty[ x \qty(\frac{-1}{4a})e^{-2ax^2} \eval_{-\infty}^\infty + \frac{1}{4a}\int_\bR \dd{x} e^{-2ax^2} ]
-        \\
-        & = -\frac{\hbar}{i} \int_{\bR} \dd{x} e^{-2ax^2}
+      \expectedval{x^2}
+      & = \int_\bR \dd{x} \psi_0^* x^2 \psi_0
+      \\
+      & = \int_\bR \dd{x} x^2 e^{-2ax^2}
+      \\
+      & = -\frac{1}{4a}xe^{-2ax^2} \eval_{-\infty}^\infty + \frac{1}{4a} \int_\bR \dd{x} e^{-2ax^2}
+      \\
+      & = \frac{1}{4a} \sqrt{\frac{\pi}{2a}}.
     \end{align*}
+
+  \item We have that
+    \begin{align*}
+      \expectedval{p^2}
+      & = -\hbar^2 \int_\bR \dd{x} \psi_0^* \pdv[2]{x} \psi_0
+      \\
+      & = -\hbar \int_\bR \dd{x} e^{-ax^2} \qty(2ae^{-ax^2} - 4a^2 x^2 e^{-ax^2})
+      \\
+      & = -2a\hbar^2 \int_\bR \dd{x} e^{-2ax^2} + 4a^2\hbar^2 \int_\bR \dd{x} x^2 e^{-2ax^2}
+      \\
+      & = -2a\hbar^2 \sqrt{\frac{\pi}{2a}} + 4a^2\hbar^2 \frac{1}{4a}\sqrt{\frac{\pi}{2a}}
+      \\
+      & = -\sqrt{\frac{\pi a}{2}}\hbar^2.
+    \end{align*}
+
+    \todo[]
+
+  \item We have that
+  \begin{align*}
+    \Delta x 
+    & = \sqrt{\expectedval{x^2} - \expectedval{x}^2}
+    \\
+    & = \sqrt{\frac{1}{4a}\sqrt{\frac{\pi}{2a}} - 0^2}
+    \\
+    & = \frac{\pi^{1/4}}{2^{3/2} a^{3/4}}.
+  \end{align*}
 \end{enumerate}
-
 
 \end{document}

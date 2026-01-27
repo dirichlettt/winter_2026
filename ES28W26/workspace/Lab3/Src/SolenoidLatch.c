@@ -1,0 +1,52 @@
+/*
+ * NAME: Soleil Demick
+ * COURSE: ES28W26 Lab 3
+ * FILE: SolenoidButton.c
+ * DESCRIPTION: Activates a solenoid from an external button input.
+ *
+ * I/O PINS:
+ *   PB4 - OUTPUT, CONTROLS TRANSISTOR FOR SOLENOID CONTROL
+ */
+
+// Includes
+#include "ES28.h"
+#include "uart.h"
+#include <stdio.h>
+
+// PIN MACROS
+#define GPIOBEN (1U<<1)
+#define TRANSISTOR_PIN (1U<<4)
+
+int main(void) {
+	uart2_init();
+	// enable clock access to port B
+	RCC->IOPENR |= GPIOBEN;
+
+	// Set transistor pin as output
+	GPIOB->MODER &= ~GPIO_MODER_MODE4_Msk;
+	GPIOB->MODER |= (GPIO_OUTPUT << GPIO_MODER_MODE4_Pos);
+
+	// var to control the state of the door latch
+	typedef enum {OPEN, CLOSED} latch_t;
+	latch_t latch_state = CLOSED;
+
+	// var for reading the keyboard
+	uint8_t keypress;
+
+	while (1) {
+		// poll keyboard
+		keypress = uart2_read();
+
+		// switch latch state on key press
+		// energize solenoid (open) when O/o is pressed, if not already energized
+		if ((keypress == 'O' || keypress == 'o') && latch_state == CLOSED) {
+			latch_state = OPEN;
+			GPIOB->ODR |= TRANSISTOR_PIN;
+		// de-energize solenoid (closed) when C/c is pressed, if not already de-energized
+		} else if ((keypress == 'C' || keypress == 'c') && latch_state == OPEN) {
+			latch_state = CLOSED;
+			GPIOB->ODR &= ~TRANSISTOR_PIN;
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,25 @@
+#include "stm32c0xx.h"			// All the port definitions are here
+
+// Bit 0 of RCC->IOPENR enables clock for GPIOA
+#define GPIOAEN		(1U<<0)		// 0b 0000 … 0000 0001 (32-bit)
+
+// Bit 5 of Port A is wired to the LED
+#define LED_PIN		(1U<<5)		// 0b 0000 … 0010 0000
+
+int main(void) {
+	RCC->IOPENR |= GPIOAEN;		// 1. Enable clock access to GPIOA
+
+	GPIOA->MODER |= (1U<<10);	// 2. Configure PA5 (Port A, bit 5)
+	GPIOA->MODER &= ~(1U<<11);	//    as output pin
+
+	while(1) {
+		GPIOA->ODR |= LED_PIN;	// 3. Set set bit 5 to turn LED on // ODR = Output Data Register
+		for (int i=0; i<100000; i++);		// kill some time
+
+		GPIOA->ODR &= ~LED_PIN;	// 4. Clear bit 5 to turn LED off
+		for(int i=0; i<100000; i++);	// kill some time
+	}
+	return 0;					// never reached
+
+
+}

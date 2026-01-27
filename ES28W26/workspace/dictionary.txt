@@ -1,0 +1,5 @@
+energize
+solenoid
+var
+soleil
+demick
