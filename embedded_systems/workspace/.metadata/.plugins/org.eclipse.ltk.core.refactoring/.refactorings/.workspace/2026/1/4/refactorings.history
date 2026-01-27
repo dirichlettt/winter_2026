@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Counter/Src/keyboard_counter.c&apos;" deleteContents="false" description="Delete resource &apos;Counter/Src/keyboard_counter.c&apos;" element1="/Counter/Src/keyboard_counter.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1768942819443"/>
-</session>

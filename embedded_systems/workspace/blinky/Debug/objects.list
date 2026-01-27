@@ -1,5 +1,0 @@
-"./Library/mylib/sysinit.o"
-"./Src/blinky_d4.o"
-"./Src/syscalls.o"
-"./Src/sysmem.o"
-"./Startup/startup_stm32c031c6tx.o"

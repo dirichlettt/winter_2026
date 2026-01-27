@@ -176,16 +176,14 @@
       \expectedval{p^2}
       & = -\hbar^2 \int_\bR \dd{x} \psi_0^* \pdv[2]{x} \psi_0
       \\
-      & = -\hbar \int_\bR \dd{x} e^{-ax^2} \qty(2ae^{-ax^2} - 4a^2 x^2 e^{-ax^2})
+      & = -\hbar^2 \int_\bR \dd{x} (4a^2x^2 e^{-2ax^2} - 2ae^{-2ax^2})
       \\
-      & = -2a\hbar^2 \int_\bR \dd{x} e^{-2ax^2} + 4a^2\hbar^2 \int_\bR \dd{x} x^2 e^{-2ax^2}
+      & = \sqrt{2\pi a}\hbar^2 - \frac{\sqrt{2\pi a}}{2}\hbar^2\\
       \\
-      & = -2a\hbar^2 \sqrt{\frac{\pi}{2a}} + 4a^2\hbar^2 \frac{1}{4a}\sqrt{\frac{\pi}{2a}}
+      & = \frac{\sqrt{2\pi a}}{2}\hbar^2
       \\
-      & = -\sqrt{\frac{\pi a}{2}}\hbar^2.
+      & = \sqrt{\frac{\pi a}{2}} \hbar^2
     \end{align*}
-
-    \todo[]
 
   \item We have that
   \begin{align*}
@@ -195,6 +193,24 @@
     & = \sqrt{\frac{1}{4a}\sqrt{\frac{\pi}{2a}} - 0^2}
     \\
     & = \frac{\pi^{1/4}}{2^{3/2} a^{3/4}}.
+  \end{align*}
+
+  \item We have that
+  \begin{align*}
+    \Delta p
+    & = \sqrt{\expectedval{p^2} - \expectedval{p}^2}
+    \\
+    & = \sqrt{\sqrt{\frac{\pi a}{2}}\hbar^2 - 0^2}
+    \\
+    & = \qty(\frac{\pi a}{2})^{1/4}\hbar.
+  \end{align*}
+
+  \item Therefore,
+  \begin{align*}
+    \Delta x \Delta p
+    & = \frac{\pi^{1/4}}{2^{3/2} a^{3/4}} \qty(\frac{\pi a}{2})^{1/4}\hbar
+    \\
+    & = \frac{}{}
   \end{align*}
 \end{enumerate}
 

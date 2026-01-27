@@ -1,6 +1,0 @@
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:20:5:__io_putchar	16	static
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:26:6:uart2_init	8	static
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:62:6:uart2_write	16	static
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:71:5:uart2_read	8	static
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:81:13:uart_set_baudrate	24	static
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/uart.c:86:17:compute_uart_bd	16	static

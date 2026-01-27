@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Blinky/Src/blinky_slow_to_fast.c&apos; to &apos;blinky_default.c&apos;" description="Rename resource &apos;blinky_slow_to_fast.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/blinky_slow_to_fast.c" name="blinky_default.c" stamp="1767904450281" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Blinky/Src/blinky.c&apos; to &apos;blinky_slow_to_fast.c&apos;" description="Rename resource &apos;blinky.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/blinky.c" name="blinky_slow_to_fast.c" stamp="1767904463415" updateReferences="true"/>
-</session>

@@ -1,5 +1,0 @@
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/sysinit.c:18:6:SystemInit	1
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/sysinit.c:39:6:delay_ms	2
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/sysinit.c:45:6:SysTickInit	1
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/sysinit.c:56:6:SysTick_Handler	1
-C:/Users/chase/Documents/winter_2026/embedded_systems/ES28W26/Library/mylib/sysinit.c:60:17:milliseconds	1
