@@ -1,0 +1,67 @@
+/* Use a potentiometer as a variable voltage source to explore the ADC
+ * Engs 28
+ *
+ * Pot is wired to pin PA0
+ */
+
+#include <stdio.h>
+#include "ES28.h"
+#include "uart.h"
+
+void pa3_adc_init(void);
+void start_conversion(void);
+uint16_t adc_read(void);
+
+int main(void) {
+
+	uint16_t sensor_value;
+	uart2_init();
+
+	// A little "hello" to show that the program has started
+	printf("\n\rHello from STM32C0!\r\n");
+	printf("Single channel / single conversion ADC test\r\n");
+
+	pa3_adc_init();
+
+	while(1) {
+		start_conversion();
+		sensor_value = adc_read();
+		printf("Sensor value: %d\r\n", sensor_value);
+
+		delay_ms(1000);
+	}
+
+}
+
+// Sampling ADC Channel 0 (which maps to PA0)
+void pa3_adc_init(void) {
+	// Configure analog input pin
+	RCC->IOPENR |=  RCC_IOPENR_GPIOBEN;	// Enable clock access to GPIOB
+	GPIOB->MODER &= ~GPIO_MODER_MODE1_Msk; // Set PB1 to analog (11)
+	GPIOB->MODER |= (GPIO_ANALOG << GPIO_MODER_MODE1_Pos);
+
+	// Configure ADC module
+	RCC->APBENR2 |= RCC_APBENR2_ADCEN;	// Enable clock access
+	ADC1->CHSELR |= ADC_CHSELR_CHSEL18;  // Select channel 18, CHSELRMOD=0 by default
+	ADC1->CFGR1 |= 0x2U << ADC_CFGR1_RES_Pos;
+	/*  6 bits -- 21
+	 *
+	 */
+
+	// Enable ADC module
+	ADC1->ISR = ADC_ISR_ADRDY;			// Clear the ready bit by writing '1' to it
+	ADC1->CR |= ADC_CR_ADEN;			// Set the ADC enable bit
+}
+
+void start_conversion(void) {
+	while( (ADC1->ISR & ADC_ISR_ADRDY ) == 0){}	// Wait for ADC to be ready
+	ADC1->CR |= ADC_CR_ADSTART;					// Start a single conversion
+}
+
+uint16_t adc_read(void) {
+	// Wait for conversion to finish
+	while( (ADC1->ISR & ADC_ISR_EOC) == 0 ){}		// Blocking
+
+	// Read converted value
+	return (uint16_t) ADC1->DR;
+}

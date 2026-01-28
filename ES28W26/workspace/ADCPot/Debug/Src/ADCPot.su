@@ -1,0 +1,4 @@
+../Src/ADCPot.c:15:5:main	24	static
+../Src/ADCPot.c:37:6:pa3_adc_init	8	static
+../Src/ADCPot.c:58:6:start_conversion	8	static
+../Src/ADCPot.c:63:10:adc_read	8	static

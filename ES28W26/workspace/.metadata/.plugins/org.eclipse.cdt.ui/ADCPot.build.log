@@ -1,0 +1,17 @@
+16:07:51 **** Incremental Build of configuration Debug for project ADCPot ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/ADCPot.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32C0 -DSTM32C031C6Tx -DSTM32C0316_DK -DSTM32C031xx -c -I../Inc -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Device" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/chipheaders/Include" -I"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/Library/mylib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/ADCPot.d" -MT"Src/ADCPot.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/ADCPot.o"
+arm-none-eabi-gcc -o "ADCPot.elf" @"objects.list"   -mcpu=cortex-m0plus -T"/home/puppygirl-dirac/Documents/coursework/winter_2026/ES28W26/workspace/ADCPot/STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADCPot.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADCPot.elf
+ 
+arm-none-eabi-size  ADCPot.elf 
+arm-none-eabi-objdump -h -S ADCPot.elf  > "ADCPot.list"
+   text	   data	    bss	    dec	    hex	filename
+   5896	     92	   1908	   7896	   1ed8	ADCPot.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADCPot.list
+ 
+
+16:07:52 Build Finished. 0 errors, 0 warnings. (took 858ms)
+
